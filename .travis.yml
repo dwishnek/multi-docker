@@ -1,9 +1,10 @@
+language: generic
 sudo: required
 services:
- - docker
+  - docker
 
- before_install:
-   - docker build -t donwishnek/react-test -f ./client/Dockerfile.dev ./client
+before_install:
+  - docker build -t donwishnek/react-test -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true donwishnek/react-test npm test
@@ -14,9 +15,9 @@ after_success:
   - docker build -t donwishek/mult-server ./server
   - docker build -t donwishek/mult-worker ./worker
 #Log in to the docker CLI
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 #Take the images and push them to docker hub
-- docker push donwishnek/multi-client
-- docker push donwishnek/multi-nginx
-- docker push donwishnek/multi-server
-- docker push donwishnek/multi-worker
+  - docker push donwishnek/multi-client
+  - docker push donwishnek/multi-nginx
+  - docker push donwishnek/multi-server
+  - docker push donwishnek/multi-worker
