@@ -11,9 +11,9 @@ script:
 
 after_success:
   - docker build -t donwishnek/multi-client ./client
-  - docker build -t donwishek/mult-nginx ./nginx
-  - docker build -t donwishek/mult-server ./server
-  - docker build -t donwishek/mult-worker ./worker
+  - docker build -t donwishnek/mult-nginx ./nginx
+  - docker build -t donwishnek/mult-server ./server
+  - docker build -t donwishnek/mult-worker ./worker
 #Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 #Take the images and push them to docker hub
